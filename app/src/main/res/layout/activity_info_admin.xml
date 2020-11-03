@@ -296,7 +296,7 @@
                         android:layout_marginRight="15dp"
                         android:gravity="center"/>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/Ingreso"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -305,6 +305,9 @@
                         android:inputType="datetime"
                         android:ems="8"
                         android:textSize="20sp"
+                        android:textColor="@color/black"
+                        android:clickable="true"
+                        android:onClick="mostrarCalendario"
                         android:gravity="center"/>
 
                 </LinearLayout>
@@ -351,6 +354,17 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:textSize="20sp"
+                android:gravity="center"/>
+
+            <Button
+                android:id="@+id/actualizar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="Agregar"
+                android:layout_gravity="center"
                 android:gravity="center"/>
 
         </LinearLayout>

@@ -76,4 +76,19 @@ public class MainActivity extends AppCompatActivity {
 
 
     }//OnCreate
+
+
+    //No cerrar la sesion
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (fAuth.getCurrentUser() != null){
+            startActivity(new Intent(getApplicationContext(), InfoAdmin.class));
+            finish();
+        }
+
+    }
+
+
 }//Main

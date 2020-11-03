@@ -63,8 +63,8 @@
                 android:ems="10"
                 android:textSize="20sp"
                 android:background="#FFFFFF"
-                android:hint="Numero de Registro"
-                android:inputType="textPersonName" />
+                android:hint="Contraseña"
+                android:inputType="textPassword" />
 
             <Button
                 android:id="@+id/button"
