@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "1068963538387",
+    "firebase_url": "https://sifampi.firebaseio.com",
+    "project_id": "sifampi",
+    "storage_bucket": "sifampi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068963538387:android:7d710b1c7e55d6f452fb26",
+        "android_client_info": {
+          "package_name": "java.hospital.adminhosptial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068963538387-5vls0b8fttm1tnmnhk1vuc8sd1t901s2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjyUFNNXYdcm7eZkeYbAnkniN4sJgCGU4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068963538387-5vls0b8fttm1tnmnhk1vuc8sd1t901s2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068963538387:android:4fb0c736f976ce3552fb26",
+        "android_client_info": {
+          "package_name": "java.hospital.sifampi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068963538387-5vls0b8fttm1tnmnhk1vuc8sd1t901s2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjyUFNNXYdcm7eZkeYbAnkniN4sJgCGU4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068963538387-5vls0b8fttm1tnmnhk1vuc8sd1t901s2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
