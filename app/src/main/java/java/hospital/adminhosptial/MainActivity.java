@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                         if ( task.isSuccessful() ){
                             final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             Toast.makeText(MainActivity.this, "Bienvenido", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(), InfoAdmin.class));
+                                startActivity(new Intent(getApplicationContext(), MostrarLista.class));
                         }else{
                             Toast.makeText(MainActivity.this, "Contraseña o correo incorrecto", Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
 
         if (fAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(), InfoAdmin.class));
+            startActivity(new Intent(getApplicationContext(), MostrarLista.class));
             finish();
         }
 

@@ -5,19 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,15 +23,16 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class InfoAdmin extends AppCompatActivity {
+public class ModInfo extends AppCompatActivity {
 
-    Spinner genero;
+    Bundle datos;
 
     //Variables de fecha
     private int ano;
@@ -53,6 +52,7 @@ public class InfoAdmin extends AppCompatActivity {
     EditText NoCama;
     EditText estado;
     EditText aviso;
+    TextView genero;
     Button btnActualizar;
 
     FirebaseAuth fAuth;
@@ -64,7 +64,7 @@ public class InfoAdmin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_info_admin);
+        setContentView(R.layout.activity_mod_info);
 
         //Fechas
         Fechaingreso = findViewById(R.id.Ingreso);
@@ -84,6 +84,7 @@ public class InfoAdmin extends AppCompatActivity {
         NoCama = findViewById(R.id.Cama);
         estado = findViewById(R.id.Estado);
         aviso = findViewById(R.id.Avisos);
+        genero = findViewById(R.id.Genero2);
         btnActualizar = findViewById(R.id.actualizar);
 
         fAuth = FirebaseAuth.getInstance();
@@ -100,11 +101,7 @@ public class InfoAdmin extends AppCompatActivity {
             }
         };
 
-        // Rellenar el Spinner
-        genero = (Spinner) findViewById(R.id.Genero);
-
-        ArrayAdapter< CharSequence > adapter = ArrayAdapter.createFromResource(this, R.array.genero, R.layout.spinner);
-        genero.setAdapter(adapter);
+        obtenerdatos();
 
 
         //Ingresar los datos a firebase
@@ -122,7 +119,7 @@ public class InfoAdmin extends AppCompatActivity {
                 final String Estado = estado.getText().toString();
                 final String Aviso = aviso.getText().toString();
                 final String fechaingreso = Fechaingreso.getText().toString();
-                final String selec = genero.getSelectedItem().toString();
+                final String selec = genero.getText().toString();
 
                 //Validar que los EditText este llenos o mandar un error
                 if (TextUtils.isEmpty(id)) {
@@ -134,13 +131,15 @@ public class InfoAdmin extends AppCompatActivity {
                     return;
                 }
                 if (selec.equals("Eliga una opcion")){
-                    Toast.makeText(InfoAdmin.this, "Elija una Opción (Hombre o Mujer)", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ModInfo.this, "Elija una Opción (Hombre o Mujer)", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
+                datos = getIntent().getExtras();
+                String base = datos.getString("pacientesid");
                 userID = fAuth.getCurrentUser().getUid();
                 //Registrar en el apartado del doctor
-                DocumentReference documentReference = fStore.collection("Administrador").document(userID).collection("Pacientes").document(id);
+                DocumentReference documentReference = fStore.collection("Administrador").document(userID).collection("Pacientes").document(base);
                 //Registrar en el apartado del paciente
                 DocumentReference documentReference2 = fStore.collection("Pacientes").document(id);
                 Map<String,Object> user = new HashMap<>();
@@ -161,7 +160,7 @@ public class InfoAdmin extends AppCompatActivity {
                 documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(InfoAdmin.this, "Registrado con Exito", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ModInfo.this, "Información Actualizada con Exito", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -169,12 +168,12 @@ public class InfoAdmin extends AppCompatActivity {
                         Log.d(TAG, "onFailure: " + e.toString());
                     }
                 });
-                Toast.makeText(InfoAdmin.this, "Registrado con Exito", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ModInfo.this, "Información Actualizada con Exito", Toast.LENGTH_SHORT).show();
 
                 documentReference2.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(InfoAdmin.this, "Registrado con Exito", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ModInfo.this, "Información Actualizada con Exito", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -182,13 +181,11 @@ public class InfoAdmin extends AppCompatActivity {
                         Log.d(TAG, "onFailure: " + e.toString());
                     }
                 });
-                Toast.makeText(InfoAdmin.this, "Registrado con Exito", Toast.LENGTH_SHORT).show();
-                finish();
+                Toast.makeText(ModInfo.this, "Información Actualizada con Exito", Toast.LENGTH_SHORT).show();
             }
         });
 
-
-    }// Fin del OnCreate
+    }//Fin del onCreate
 
 
     //Crear el calendario
@@ -206,4 +203,45 @@ public class InfoAdmin extends AppCompatActivity {
     }
 
 
-}//InfoAdmin
+    private void obtenerdatos(){
+
+        datos = getIntent().getExtras();
+        String base = datos.getString("pacientesid");
+
+        userID = fAuth.getCurrentUser().getUid();
+        fStore.collection("Administrador").document(userID).collection("Pacientes").
+                document(base).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                 String id = documentSnapshot.getString("id");
+                 String paciente = documentSnapshot.getString("Nombre");
+                 String Edad = documentSnapshot.getString("Edad");
+                 String alergia = documentSnapshot.getString("Alergias");
+                 String doctor = documentSnapshot.getString("Doctor");
+                 String especialidad = documentSnapshot.getString("Especialidad");
+                 String piso = documentSnapshot.getString("Piso");
+                 String cama = documentSnapshot.getString("Cama");
+                 String Estado = documentSnapshot.getString("Estado");
+                 String Aviso = documentSnapshot.getString("Aviso");
+                 String fechaingreso = documentSnapshot.getString("Ingreso");
+                 String select = documentSnapshot.getString("Genero");
+
+                NumRegistro.setText(id);
+                NomPaciente.setText(paciente);
+                edad.setText(Edad);
+                genero.setText(select);
+                alergias.setText(alergia);
+                NomDoc.setText(doctor);
+                especial.setText(especialidad);
+                NoPiso.setText(piso);
+                NoCama.setText(cama);
+                estado.setText(Estado);
+                aviso.setText(Aviso);
+                Fechaingreso.setText(fechaingreso);
+
+            }
+        });
+
+    }//Fin del obtenerdatos
+
+}//Fin del class ModInfo
