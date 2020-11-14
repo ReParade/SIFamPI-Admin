@@ -37,7 +37,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:background="#FFFFFF"
-                android:hint="Num. de Registro: 1707092"
+                android:hint="Num. de Registro: 1707092*"
                 android:textSize="20sp"
                 android:layout_marginTop="-60dp"/>
 
@@ -61,7 +61,7 @@
                         android:layout_width="170dp"
                         android:layout_height="wrap_content"
                         android:background="#0E9909"
-                        android:text="Paciente: "
+                        android:text="Paciente*: "
                         android:textSize="20sp"
                         android:layout_marginRight="15dp"
                         android:gravity="center"/>
@@ -118,7 +118,7 @@
                         android:layout_width="170dp"
                         android:layout_height="wrap_content"
                         android:background="#0E9909"
-                        android:text="Genero: "
+                        android:text="Genero*: "
                         android:textSize="20sp"
                         android:layout_marginRight="15dp"
                         android:gravity="center"/>
