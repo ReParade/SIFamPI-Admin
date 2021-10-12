@@ -54,7 +54,7 @@ public class ModInfo extends AppCompatActivity {
     private static final int TIPO_DIALOGO = 0;
     private static DatePickerDialog.OnDateSetListener oyenteSelectorFecha;
 
-    EditText NumRegistro;
+    TextView NumRegistro;
     EditText NomPaciente;
     EditText edad;
     EditText alergias;
