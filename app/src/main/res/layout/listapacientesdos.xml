@@ -41,13 +41,12 @@
                 android:gravity="center">
 
                 <Button
-                    android:id="@+id/btnVer"
+                    android:id="@+id/btnEditar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Ver"
+                    android:text="Editar"
                     android:layout_marginTop="10dp"
-                    android:textColor="@color/black"
-                     />
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 

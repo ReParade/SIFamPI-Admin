@@ -4,23 +4,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.DownloadManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-public class MostrarLista extends AppCompatActivity {
+public class MostrarListaDos extends AppCompatActivity {
+
+    Bundle datos;
 
     RecyclerView recyclerViewLista;
-    listapacientes mAdapter;
+    listapacientesDos mAdapter;
     FirebaseFirestore mFirestore;
     FirebaseAuth fAuth;
 
@@ -29,7 +31,7 @@ public class MostrarLista extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mostrar_lista);
+        setContentView(R.layout.activity_mostrar_lista_dos);
 
         recyclerViewLista = findViewById(R.id.recyclerLista);
         recyclerViewLista.setLayoutManager(new LinearLayoutManager(this));
@@ -37,15 +39,19 @@ public class MostrarLista extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         userID = fAuth.getCurrentUser().getUid();
 
-        Query query = mFirestore.collection("Administrador").document(userID).collection("Pacientes");
+        datos = getIntent().getExtras();
+        String base = datos.getString("pacientesid"); //JnyEXKdtn6SGmkBJOykjJA6HZKn1 id
+        System.out.println(base);
 
-        FirestoreRecyclerOptions<contenido_lista> firestoreRecyclerOptions = new FirestoreRecyclerOptions.Builder<contenido_lista>().setQuery(query, contenido_lista.class).build();
+        Query query = mFirestore.collection("Administrador").document(userID).collection("Pacientes").document(base).collection("Internados");
 
-        mAdapter = new listapacientes( firestoreRecyclerOptions, this );
+        FirestoreRecyclerOptions<contenido_lista_dos> firestoreRecyclerOptions = new FirestoreRecyclerOptions.Builder<contenido_lista_dos>().setQuery(query, contenido_lista_dos.class).build();
+
+        mAdapter = new listapacientesDos( firestoreRecyclerOptions, this );
         mAdapter.notifyDataSetChanged();
         recyclerViewLista.setAdapter(mAdapter);
 
-    }//Fin del onCreate
+    }//onCreate
 
     @Override
     protected void onStart() {
@@ -59,30 +65,13 @@ public class MostrarLista extends AppCompatActivity {
         mAdapter.stopListening();
     }
 
-    //Metodo para cerrar sesion
-    public void logout() {
-        FirebaseAuth.getInstance().signOut();//logout
-        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-        finish();
+    public void boton(View view){
+        Intent med = new Intent(this, InfoAdmin.class);
+        datos = getIntent().getExtras();
+        String base2 = datos.getString("pacientesid"); //JnyEXKdtn6SGmkBJOykjJA6HZKn1 id
+        med.putExtra("base3", base2);
+        System.out.println(base2);
+        startActivity(med);
     }
 
-    //Crear el menu de opciones
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater menuInflate = getMenuInflater();
-        menuInflate.inflate(R.menu.menu,menu);
-        return true;
-    }
-    //Darle funcionalidad al menu de opciones
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
-            case R.id.cerrar:
-                logout();
-                return true;
-            default:return super.onOptionsItemSelected(item);
-        }
-    }
-
-
-}//Fin del public class
+}//public class

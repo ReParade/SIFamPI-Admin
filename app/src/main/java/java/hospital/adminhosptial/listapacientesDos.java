@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,13 +22,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class listapacientes extends FirestoreRecyclerAdapter<contenido_lista, listapacientes.ViewHolder> {
+public class listapacientesDos extends FirestoreRecyclerAdapter<contenido_lista_dos, listapacientesDos.ViewHolder> {
 
     private Activity activity;
     private FirebaseFirestore mFirestore;
     private FirebaseAuth fAuth;
-    String userID;
 
+    Bundle datos;
 
     /**
      * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
@@ -33,7 +36,7 @@ public class listapacientes extends FirestoreRecyclerAdapter<contenido_lista, li
      *
      * @param options
      */
-    public listapacientes(@NonNull FirestoreRecyclerOptions<contenido_lista> options,  Activity activity) {
+    public listapacientesDos(@NonNull FirestoreRecyclerOptions<contenido_lista_dos> options, Activity activity) {
         super(options);
         this.activity = activity;
         mFirestore = FirebaseFirestore.getInstance();
@@ -42,7 +45,7 @@ public class listapacientes extends FirestoreRecyclerAdapter<contenido_lista, li
 
     //Se establecen los valores que tendra la lista
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull contenido_lista articulo) {
+    protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull contenido_lista_dos articulo) {
         DocumentSnapshot PacienteListas = getSnapshots().getSnapshot(holder.getAdapterPosition());
         final String id = PacienteListas.getId();
 
@@ -50,44 +53,45 @@ public class listapacientes extends FirestoreRecyclerAdapter<contenido_lista, li
         holder.txtID.setText(articulo.getID());
 
         //Ver Paciente
-        holder.buttonVer.setOnClickListener(new View.OnClickListener() {
+        holder.buttonEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Esto pasa el id del usuario a MostrarListaDos "JnyEXKdtn6SGmkBJOykjJA6HZKn1"
-                Intent intent = new Intent(activity, MostrarListaDos.class);
-                intent.putExtra("pacientesid", id);
 
-                activity.startActivity(intent);
+
+                //////////////////////////////////////////////////
+                AlertDialog.Builder ventana = new AlertDialog.Builder(activity);
+                ventana.setMessage("Ingrese el ID del Usuario");
+                ventana.setTitle(("ID del Usuario"));
+                final EditText ET_id = new EditText(activity);
+                ventana.setView(ET_id);
+
+                ventana.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String idUsuario = ET_id.getText().toString().trim();
+
+                        //Esto pasa el id de los internados
+                        Intent intent = new Intent(activity, ModInfo.class);
+                        intent.putExtra("pacientesid2", id);
+                        intent.putExtra("pacientes", idUsuario);
+                        System.out.println(id);
+
+                        activity.startActivity(intent);
+
+                    }
+                });
+
+                ventana.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(activity, "Cancelado", Toast.LENGTH_SHORT);
+                    }
+                });
+                ventana.show();
+//////////////////////////////////////////////
+
             }
         });
-
-     /*   //Eliminar
-        holder.buttunBorrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-                builder.setTitle("ELIMINAR");
-                builder.setMessage("¿Desea eliminar a esta persona?");
-
-                builder.setPositiveButton("Si", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        userID = fAuth.getCurrentUser().getUid();
-                        mFirestore.collection("Administrador").document(userID).collection("Pacientes").document(id).delete();
-                    }
-                });
-
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //Cerrar el arlet dialog
-                    }
-                });
-
-                builder.create().show();
-            }
-        }); */
 
     }
 
@@ -95,7 +99,7 @@ public class listapacientes extends FirestoreRecyclerAdapter<contenido_lista, li
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.lista_pacientes, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listapacientesdos, parent, false);
         return new ViewHolder(view);
     }
 
@@ -105,9 +109,7 @@ public class listapacientes extends FirestoreRecyclerAdapter<contenido_lista, li
         TextView txtNombre;
         TextView txtID;
 
-        Button buttonVer;
-        Button buttunBorrar;
-
+        Button buttonEditar;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -115,11 +117,10 @@ public class listapacientes extends FirestoreRecyclerAdapter<contenido_lista, li
             txtID = itemView.findViewById(R.id.txtID);
             txtNombre = itemView.findViewById(R.id.txtNombre);
 
-            buttonVer = itemView.findViewById(R.id.btnVer);
-            /*buttunBorrar = itemView.findViewById(R.id.btnEiminar);*/
+            buttonEditar = itemView.findViewById(R.id.btnEditar);
 
         }
 
     }//Fin  public class ViewHolder
 
-}//Fin public class listapacientes
+}//Fin public class listapacientesDos

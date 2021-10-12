@@ -33,6 +33,8 @@ import java.util.Map;
 
 public class InfoAdmin extends AppCompatActivity {
 
+    Bundle datos;
+
     Spinner genero;
 
     //Variables de fecha
@@ -138,11 +140,13 @@ public class InfoAdmin extends AppCompatActivity {
                     return;
                 }
 
+                datos = getIntent().getExtras();
+                String base = datos.getString("base3");
                 userID = fAuth.getCurrentUser().getUid();
                 //Registrar en el apartado del doctor
-                DocumentReference documentReference = fStore.collection("Administrador").document(userID).collection("Pacientes").document(id);
+                DocumentReference documentReference = fStore.collection("Administrador").document(userID).collection("Pacientes").document(base).collection("Internados").document(id);
                 //Registrar en el apartado del paciente
-                DocumentReference documentReference2 = fStore.collection("Pacientes").document(id);
+                DocumentReference documentReference2 = fStore.collection("Pacientes").document(base).collection("Internados").document(id);
                 Map<String,Object> user = new HashMap<>();
 
                 user.put("id", id);

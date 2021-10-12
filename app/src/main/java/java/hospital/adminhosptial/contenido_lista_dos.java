@@ -1,15 +1,15 @@
 package java.hospital.adminhosptial;
 
-public class contenido_lista {
+public class contenido_lista_dos {
 
     private String Nombre;
     private String id;
 
-    public contenido_lista() {
+    public contenido_lista_dos() {
 
     }
 
-    public contenido_lista(String Nombre, String id){
+    public contenido_lista_dos(String Nombre, String id){
         this.Nombre = Nombre;
         this.id = id;
     }
@@ -29,4 +29,5 @@ public class contenido_lista {
  /*   public void setid(String id) {
         this.id = id;
     }*/
-}//Fin public class
+
+}

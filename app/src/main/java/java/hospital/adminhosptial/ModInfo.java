@@ -2,13 +2,21 @@ package java.hospital.adminhosptial;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.DialogFragment;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,12 +27,15 @@ import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -33,6 +44,7 @@ import java.util.Map;
 public class ModInfo extends AppCompatActivity {
 
     Bundle datos;
+    Bundle datos2;
 
     //Variables de fecha
     private int ano;
@@ -65,6 +77,7 @@ public class ModInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mod_info);
+
 
         //Fechas
         Fechaingreso = findViewById(R.id.Ingreso);
@@ -136,12 +149,17 @@ public class ModInfo extends AppCompatActivity {
                 }
 
                 datos = getIntent().getExtras();
-                String base = datos.getString("pacientesid");
+                String base = datos.getString("pacientesid2");
+
+                datos2 = getIntent().getExtras();
+                String IdUsuario = datos2.getString("pacientes");
+
                 userID = fAuth.getCurrentUser().getUid();
                 //Registrar en el apartado del doctor
-                DocumentReference documentReference = fStore.collection("Administrador").document(userID).collection("Pacientes").document(base);
+                DocumentReference documentReference = fStore.collection("Administrador").document(userID).collection("Pacientes").document(IdUsuario).
+                        collection("Internados").document(base);
                 //Registrar en el apartado del paciente
-                DocumentReference documentReference2 = fStore.collection("Pacientes").document(id);
+                DocumentReference documentReference2 = fStore.collection("Pacientes").document(IdUsuario).collection("Internados").document(base);
                 Map<String,Object> user = new HashMap<>();
 
                 user.put("id", id);
@@ -206,11 +224,14 @@ public class ModInfo extends AppCompatActivity {
     private void obtenerdatos(){
 
         datos = getIntent().getExtras();
-        String base = datos.getString("pacientesid");
+        String base = datos.getString("pacientesid2");
+
+        datos2 = getIntent().getExtras();
+        String IdUsuario = datos2.getString("pacientes");
 
         userID = fAuth.getCurrentUser().getUid();
-        fStore.collection("Administrador").document(userID).collection("Pacientes").
-                document(base).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        fStore.collection("Administrador").document(userID).collection("Pacientes").document(IdUsuario).
+                collection("Internados").document(base).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                  String id = documentSnapshot.getString("id");
@@ -243,5 +264,32 @@ public class ModInfo extends AppCompatActivity {
         });
 
     }//Fin del obtenerdatos
+
+  /*  private void Dialogo(){
+
+        //////////////////////////////////////////////////
+        AlertDialog.Builder ventana = new AlertDialog.Builder(this);
+        ventana.setMessage("Ingrese el ID del Administrador");
+        ventana.setTitle(("ID del Administrador"));
+        ventana.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(ModInfo.this, "Ahi va xd", Toast.LENGTH_LONG);
+            }
+        });
+
+        ventana.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(ModInfo.this, "Cancelado", Toast.LENGTH_SHORT);
+                finish();
+            }
+        });
+        ventana.show();
+//////////////////////////////////////////////
+
+    } */
+
+
 
 }//Fin del class ModInfo
