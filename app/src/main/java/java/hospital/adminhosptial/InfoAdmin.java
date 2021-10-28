@@ -133,6 +133,10 @@ public class InfoAdmin extends AppCompatActivity {
                     Toast.makeText(InfoAdmin.this, "Elija una Opción (Hombre o Mujer)", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if (TextUtils.isEmpty(Estado)) {
+                    NomPaciente.setError("Estado del Paciente Requerido");
+                    return;
+                }
 
                 datos = getIntent().getExtras();
                 String base = datos.getString("base3");
