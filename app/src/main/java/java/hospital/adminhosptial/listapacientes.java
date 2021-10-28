@@ -2,6 +2,9 @@ package java.hospital.adminhosptial;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -9,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -61,6 +65,17 @@ public class listapacientes extends FirestoreRecyclerAdapter<contenido_lista, li
             }
         });
 
+        holder.buttunCopiar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("ID", id);
+                clipboard.setPrimaryClip(clip);
+
+                Toast.makeText(activity, "ID copiado", Toast.LENGTH_SHORT).show();
+            }
+        });
+
      /*   //Eliminar
         holder.buttunBorrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,6 +121,7 @@ public class listapacientes extends FirestoreRecyclerAdapter<contenido_lista, li
         TextView txtID;
 
         Button buttonVer;
+        Button buttunCopiar;
         Button buttunBorrar;
 
 
@@ -116,6 +132,7 @@ public class listapacientes extends FirestoreRecyclerAdapter<contenido_lista, li
             txtNombre = itemView.findViewById(R.id.txtNombre);
 
             buttonVer = itemView.findViewById(R.id.btnVer);
+            buttunCopiar = itemView.findViewById(R.id.btnCopiar);
             /*buttunBorrar = itemView.findViewById(R.id.btnEiminar);*/
 
         }

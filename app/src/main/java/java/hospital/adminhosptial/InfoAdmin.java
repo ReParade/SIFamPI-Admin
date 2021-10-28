@@ -48,9 +48,7 @@ public class InfoAdmin extends AppCompatActivity {
     EditText NumRegistro;
     EditText NomPaciente;
     EditText edad;
-    EditText alergias;
     EditText NomDoc;
-    EditText especial;
     EditText NoPiso;
     EditText NoCama;
     EditText estado;
@@ -79,9 +77,7 @@ public class InfoAdmin extends AppCompatActivity {
         NumRegistro = findViewById(R.id.ID);
         NomPaciente = findViewById(R.id.Paciente);
         edad = findViewById(R.id.Edad);
-        alergias = findViewById(R.id.Alergias);
         NomDoc = findViewById(R.id.Doctor);
-        especial = findViewById(R.id.Especialidad);
         NoPiso = findViewById(R.id.Piso);
         NoCama = findViewById(R.id.Cama);
         estado = findViewById(R.id.Estado);
@@ -116,9 +112,7 @@ public class InfoAdmin extends AppCompatActivity {
                 final String id = NumRegistro.getText().toString();
                 final String paciente = NomPaciente.getText().toString();
                 final String Edad = edad.getText().toString();
-                final String alergia = alergias.getText().toString();
                 final String doctor = NomDoc.getText().toString();
-                final String especialidad = especial.getText().toString();
                 final String piso = NoPiso.getText().toString();
                 final String cama = NoCama.getText().toString();
                 final String Estado = estado.getText().toString();
@@ -152,9 +146,7 @@ public class InfoAdmin extends AppCompatActivity {
                 user.put("id", id);
                 user.put("Nombre", paciente);
                 user.put("Edad", Edad);
-                user.put("Alergias", alergia);
                 user.put("Doctor", doctor);
-                user.put("Especialidad", especialidad);
                 user.put("Piso", piso);
                 user.put("Cama", cama);
                 user.put("Estado", Estado);

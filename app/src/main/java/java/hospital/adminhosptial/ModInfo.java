@@ -57,9 +57,7 @@ public class ModInfo extends AppCompatActivity {
     TextView NumRegistro;
     EditText NomPaciente;
     EditText edad;
-    EditText alergias;
     EditText NomDoc;
-    EditText especial;
     EditText NoPiso;
     EditText NoCama;
     EditText estado;
@@ -90,9 +88,7 @@ public class ModInfo extends AppCompatActivity {
         NumRegistro = findViewById(R.id.ID);
         NomPaciente = findViewById(R.id.Paciente);
         edad = findViewById(R.id.Edad);
-        alergias = findViewById(R.id.Alergias);
         NomDoc = findViewById(R.id.Doctor);
-        especial = findViewById(R.id.Especialidad);
         NoPiso = findViewById(R.id.Piso);
         NoCama = findViewById(R.id.Cama);
         estado = findViewById(R.id.Estado);
@@ -124,9 +120,7 @@ public class ModInfo extends AppCompatActivity {
                 final String id = NumRegistro.getText().toString();
                 final String paciente = NomPaciente.getText().toString();
                 final String Edad = edad.getText().toString();
-                final String alergia = alergias.getText().toString();
                 final String doctor = NomDoc.getText().toString();
-                final String especialidad = especial.getText().toString();
                 final String piso = NoPiso.getText().toString();
                 final String cama = NoCama.getText().toString();
                 final String Estado = estado.getText().toString();
@@ -165,9 +159,7 @@ public class ModInfo extends AppCompatActivity {
                 user.put("id", id);
                 user.put("Nombre", paciente);
                 user.put("Edad", Edad);
-                user.put("Alergias", alergia);
                 user.put("Doctor", doctor);
-                user.put("Especialidad", especialidad);
                 user.put("Piso", piso);
                 user.put("Cama", cama);
                 user.put("Estado", Estado);
@@ -237,9 +229,7 @@ public class ModInfo extends AppCompatActivity {
                  String id = documentSnapshot.getString("id");
                  String paciente = documentSnapshot.getString("Nombre");
                  String Edad = documentSnapshot.getString("Edad");
-                 String alergia = documentSnapshot.getString("Alergias");
                  String doctor = documentSnapshot.getString("Doctor");
-                 String especialidad = documentSnapshot.getString("Especialidad");
                  String piso = documentSnapshot.getString("Piso");
                  String cama = documentSnapshot.getString("Cama");
                  String Estado = documentSnapshot.getString("Estado");
@@ -251,9 +241,7 @@ public class ModInfo extends AppCompatActivity {
                 NomPaciente.setText(paciente);
                 edad.setText(Edad);
                 genero.setText(select);
-                alergias.setText(alergia);
                 NomDoc.setText(doctor);
-                especial.setText(especialidad);
                 NoPiso.setText(piso);
                 NoCama.setText(cama);
                 estado.setText(Estado);
@@ -264,32 +252,6 @@ public class ModInfo extends AppCompatActivity {
         });
 
     }//Fin del obtenerdatos
-
-  /*  private void Dialogo(){
-
-        //////////////////////////////////////////////////
-        AlertDialog.Builder ventana = new AlertDialog.Builder(this);
-        ventana.setMessage("Ingrese el ID del Administrador");
-        ventana.setTitle(("ID del Administrador"));
-        ventana.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(ModInfo.this, "Ahi va xd", Toast.LENGTH_LONG);
-            }
-        });
-
-        ventana.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(ModInfo.this, "Cancelado", Toast.LENGTH_SHORT);
-                finish();
-            }
-        });
-        ventana.show();
-//////////////////////////////////////////////
-
-    } */
-
 
 
 }//Fin del class ModInfo

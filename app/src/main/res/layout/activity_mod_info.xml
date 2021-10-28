@@ -146,34 +146,6 @@
                         android:layout_width="170dp"
                         android:layout_height="wrap_content"
                         android:background="#0E9909"
-                        android:text="Alergias: "
-                        android:textSize="20sp"
-                        android:layout_marginRight="15dp"
-                        android:gravity="center"/>
-
-                    <EditText
-                        android:id="@+id/Alergias"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#FFFFFF"
-                        android:ems="8"
-                        android:textSize="20sp"
-                        android:gravity="center"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp">
-
-                    <TextView
-                        android:layout_width="170dp"
-                        android:layout_height="wrap_content"
-                        android:background="#0E9909"
                         android:text="Doctor: "
                         android:textSize="20sp"
                         android:layout_marginRight="15dp"
@@ -181,34 +153,6 @@
 
                     <EditText
                         android:id="@+id/Doctor"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#FFFFFF"
-                        android:ems="8"
-                        android:textSize="20sp"
-                        android:gravity="center"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp">
-
-                    <TextView
-                        android:layout_width="170dp"
-                        android:layout_height="wrap_content"
-                        android:background="#0E9909"
-                        android:text="Espacialidad: "
-                        android:textSize="20sp"
-                        android:layout_marginRight="15dp"
-                        android:gravity="center"/>
-
-                    <EditText
-                        android:id="@+id/Especialidad"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="#FFFFFF"
