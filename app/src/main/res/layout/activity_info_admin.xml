@@ -36,7 +36,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:background="#FFFFFF"
                 android:hint="Num. de Registro: 1707092"
                 android:textSize="20sp"
                 android:layout_marginTop="5dp"/>
@@ -70,10 +69,11 @@
                         android:id="@+id/Paciente"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="#FFFFFF"
                         android:ems="8"
                         android:textSize="20sp"
-                        android:gravity="center"/>
+                        android:hint="Paciente"
+                        android:drawableLeft="@drawable/persona"
+                        android:drawableStart="@drawable/persona" />
 
                 </LinearLayout>
 
@@ -98,11 +98,12 @@
                         android:id="@+id/Edad"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="#FFFFFF"
                         android:ems="8"
                         android:textSize="20sp"
+                        android:hint="Edad"
+                        android:drawableLeft="@drawable/edad"
                         android:inputType="number"
-                        android:gravity="center"/>
+                        android:drawableStart="@drawable/edad" />
 
                 </LinearLayout>
 
@@ -127,10 +128,9 @@
                         android:id="@+id/Genero"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="#FFFFFF"
+                        android:background="#69DADB"
                         android:ems="8"
-                        android:textSize="20sp"
-                        android:gravity="center"/>
+                        android:textSize="20sp"/>
 
                 </LinearLayout>
 
@@ -155,10 +155,11 @@
                         android:id="@+id/Doctor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="#FFFFFF"
+                        android:hint="Doctor"
                         android:ems="8"
                         android:textSize="20sp"
-                        android:gravity="center"/>
+                        android:drawableLeft="@drawable/doctor"
+                        android:drawableStart="@drawable/doctor" />
 
                 </LinearLayout>
 
@@ -183,11 +184,12 @@
                         android:id="@+id/Piso"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="#FFFFFF"
+                        android:hint="No. Piso"
                         android:ems="8"
                         android:inputType="number"
                         android:textSize="20sp"
-                        android:gravity="center"/>
+                        android:drawableLeft="@drawable/piso"
+                        android:drawableStart="@drawable/piso" />
 
                 </LinearLayout>
 
@@ -212,11 +214,12 @@
                         android:id="@+id/Cama"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="#FFFFFF"
+                        android:hint="Cama"
                         android:inputType="number"
                         android:ems="8"
                         android:textSize="20sp"
-                        android:gravity="center"/>
+                        android:drawableLeft="@drawable/cama"
+                        android:drawableStart="@drawable/cama" />
 
                 </LinearLayout>
 
@@ -243,7 +246,6 @@
                         android:id="@+id/Ingreso"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="#FFFFFF"
                         android:hint="dd-mm-yyyy"
                         android:inputType="datetime"
                         android:ems="8"
@@ -251,7 +253,9 @@
                         android:textColor="@color/black"
                         android:clickable="true"
                         android:onClick="mostrarCalendario"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:drawableLeft="@drawable/ingreso"
+                        android:drawableStart="@drawable/ingreso" />
 
                 </LinearLayout>
 

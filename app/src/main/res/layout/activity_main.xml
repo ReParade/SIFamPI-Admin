@@ -42,29 +42,48 @@
                 android:textSize="20sp"
                 android:background="#69DADB"/>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
             <EditText
                 android:id="@+id/correo"
-                android:layout_width="250dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
                 android:ems="10"
-                android:textSize="20sp"
-                android:background="#FFFFFF"
                 android:hint="Correo electrónico"
-                android:inputType="textEmailAddress" />
+                android:drawableLeft="@drawable/persona"
+                android:background="#69DADB"
+                android:inputType="textEmailAddress"
+                android:drawableStart="@drawable/persona"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true">
 
             <EditText
                 android:id="@+id/contra"
-                android:layout_width="250dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
                 android:ems="10"
-                android:textSize="20sp"
-                android:background="#FFFFFF"
+                android:drawableLeft="@drawable/contra"
                 android:hint="Contraseña"
-                android:inputType="textPassword" />
+                android:background="#69DADB"
+                android:inputType="textPassword"
+                android:drawableStart="@drawable/contra" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/button"
