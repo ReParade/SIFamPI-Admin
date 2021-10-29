@@ -182,12 +182,10 @@ public class ModInfo extends AppCompatActivity {
                         Log.d(TAG, "onFailure: " + e.toString());
                     }
                 });
-                Toast.makeText(ModInfo.this, "Información Actualizada con Exito", Toast.LENGTH_SHORT).show();
 
                 documentReference2.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(ModInfo.this, "Información Actualizada con Exito", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -195,7 +193,6 @@ public class ModInfo extends AppCompatActivity {
                         Log.d(TAG, "onFailure: " + e.toString());
                     }
                 });
-                Toast.makeText(ModInfo.this, "Información Actualizada con Exito", Toast.LENGTH_SHORT).show();
             }
         });
 
