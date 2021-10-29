@@ -91,10 +91,10 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:background="#463F3F"
                 android:text="Ingresar"
                 android:textColor="#FFFFFF"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:background="@drawable/presion"/>
 
             <ProgressBar
                 android:id="@+id/progressBar"

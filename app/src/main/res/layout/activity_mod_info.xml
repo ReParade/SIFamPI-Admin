@@ -308,10 +308,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:textSize="20sp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:text="Actualizar Datos"
                 android:layout_gravity="center"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:background="@drawable/presion"/>
 
         </LinearLayout>
 

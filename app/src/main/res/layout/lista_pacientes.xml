@@ -46,7 +46,8 @@
                     android:layout_height="match_parent"
                     android:text="Ver"
                     android:layout_marginTop="10dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
+                    android:background="@drawable/presion"
                      />
 
                 <LinearLayout
@@ -61,8 +62,10 @@
                         android:layout_height="match_parent"
                         android:text="Copiar ID"
                         android:layout_marginTop="10dp"
-                        android:textColor="@color/black"
-                        />
+                        android:textColor="@color/white"
+                        android:background="@drawable/presion"
+                        android:drawableLeft="@drawable/copiar"
+                        android:drawableStart="@drawable/copiar" />
 
                 </LinearLayout>
 
