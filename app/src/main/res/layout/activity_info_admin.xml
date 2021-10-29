@@ -267,7 +267,7 @@
                 android:id="@+id/textp1"
                 android:layout_width="350dp"
                 android:layout_height="match_parent"
-                android:background="#69DADB"
+                android:background="#1597E5"
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center"
                 android:text="Estado del paceinte"
@@ -287,7 +287,7 @@
                 android:id="@+id/textp2"
                 android:layout_width="350dp"
                 android:layout_height="match_parent"
-                android:background="#69DADB"
+                android:background="#1597E5"
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center"
                 android:text="Avisos"
@@ -301,7 +301,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:textSize="20sp"
-                android:gravity="center"/>
+                android:gravity="center" />
 
             <Button
                 android:id="@+id/actualizar"
