@@ -7,9 +7,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="start"
-    android:background="#0bb791"
+    android:background="#69DADB"
     tools:context=".InfoAdmin">
-
 
     <ScrollView
         android:layout_width="match_parent"
@@ -23,11 +22,11 @@
 
             <ImageView
                 android:id="@+id/logo"
-                android:layout_width="272dp"
-                android:layout_height="267dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="-75dp"
-                app:srcCompat="@drawable/sifampi"
+                android:layout_marginTop="5dp"
+                app:srcCompat="@drawable/admin"
                 tools:layout_editor_absoluteX="69dp"
                 tools:layout_editor_absoluteY="16dp" />
 
@@ -40,15 +39,15 @@
                 android:background="#FFFFFF"
                 android:hint="Num. de Registro: 1707092"
                 android:textSize="20sp"
-                android:layout_marginTop="-60dp"/>
+                android:layout_marginTop="5dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="25dp"
                 android:layout_gravity="center"
-                android:background="#D2DFE2">
+                android:background="#69DADB">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -61,7 +60,7 @@
                     <TextView
                         android:layout_width="170dp"
                         android:layout_height="wrap_content"
-                        android:background="#0E9909"
+                        android:background="#1597E5"
                         android:text="Paciente: "
                         android:textSize="20sp"
                         android:layout_marginRight="15dp"
@@ -89,7 +88,7 @@
                     <TextView
                         android:layout_width="170dp"
                         android:layout_height="wrap_content"
-                        android:background="#0E9909"
+                        android:background="#1597E5"
                         android:text="Edad: "
                         android:textSize="20sp"
                         android:layout_marginRight="15dp"
@@ -118,7 +117,7 @@
                     <TextView
                         android:layout_width="170dp"
                         android:layout_height="wrap_content"
-                        android:background="#0E9909"
+                        android:background="#1597E5"
                         android:text="Genero: "
                         android:textSize="20sp"
                         android:layout_marginRight="15dp"
@@ -146,7 +145,7 @@
                     <TextView
                         android:layout_width="170dp"
                         android:layout_height="wrap_content"
-                        android:background="#0E9909"
+                        android:background="#1597E5"
                         android:text="Doctor: "
                         android:textSize="20sp"
                         android:layout_marginRight="15dp"
@@ -174,7 +173,7 @@
                     <TextView
                         android:layout_width="170dp"
                         android:layout_height="wrap_content"
-                        android:background="#0E9909"
+                        android:background="#1597E5"
                         android:text="No. Piso: "
                         android:textSize="20sp"
                         android:layout_marginRight="15dp"
@@ -203,7 +202,7 @@
                     <TextView
                         android:layout_width="170dp"
                         android:layout_height="wrap_content"
-                        android:background="#0E9909"
+                        android:background="#1597E5"
                         android:text="No. Cama: "
                         android:textSize="20sp"
                         android:layout_marginRight="15dp"
@@ -234,7 +233,7 @@
                     <TextView
                         android:layout_width="170dp"
                         android:layout_height="wrap_content"
-                        android:background="#0E9909"
+                        android:background="#1597E5"
                         android:text="Fecha de Ingreso: "
                         android:textSize="20sp"
                         android:layout_marginRight="15dp"
@@ -264,7 +263,7 @@
                 android:id="@+id/textp1"
                 android:layout_width="350dp"
                 android:layout_height="match_parent"
-                android:background="#7C8688"
+                android:background="#69DADB"
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center"
                 android:text="Estado del paceinte"
@@ -284,7 +283,7 @@
                 android:id="@+id/textp2"
                 android:layout_width="350dp"
                 android:layout_height="match_parent"
-                android:background="#7C8688"
+                android:background="#69DADB"
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center"
                 android:text="Avisos"

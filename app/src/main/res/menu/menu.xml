@@ -13,7 +13,7 @@
             <item
                 android:id="@+id/cerrar"
                 android:icon="@drawable/ic_exit"
-                android:title="Cerrar Sesion"
+                android:title="Cerrar Sesión"
                 />
 
         </menu>
